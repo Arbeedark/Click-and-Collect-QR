@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- QRious: QR code generator -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js" integrity="sha512-2JDYv3eQPx4RqgBybIx+cp+T3eV7fwIUdNIpsGQ/3uJ8+S0G5IZay3oZad3JerZTxtqrsF+PWGV1SBf0xG5yYg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <style>
+    html, body {
+      width: 100%; height: 100%; margin: 0;
+      display: flex; justify-content: center; align-items: center;
+      background-color: #e8f5ed; /* H&B mint */
+      font-family: Arial, sans-serif;
+    }
+    .qr-box {
+      background-color: #fff;
+      border-radius: 1rem;
+      padding: 1rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 320px;
+      width: 100%;
+    }
+    .offer-text h3 {
+      font-size: 1.4rem; font-weight: 700;
+      color: #005445;
+      margin-bottom: 0.5rem;
+    }
+    .offer-text p {
+      font-size: 1rem; color: #333;
+      margin: 0 0 1rem;
+    }
+    .qr-container {
+      background-color: #000;
+      border-radius: 1rem;
+      padding: 0.5rem;
+      display: inline-block;
+    }
+    #qrCanvas {
+      display: block;
+      width: 200px; height: 200px;
+      background: #fff;
+      border: 16px solid #fff;
+      border-radius: 0.75rem;
+    }
+    .scan-text {
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="qr-box">
+    <div class="offer-text">
+      <h3>Click &amp; Collect exclusive <u>10% off offer:</u></h3>
+      <p>Only to be redeemed for customers who have collected their Click &amp; Collect order that same day and are purchasing in-store.</p>
+    </div>
+    <div class="qr-container">
+      <canvas id="qrCanvas"></canvas>
+      <div class="scan-text">SCAN ME</div>
+    </div>
+  </div>
+
+  <script>
+    // Generate QR code with high error correction
+    new QRious({
+      element: document.getElementById('qrCanvas'),
+      value: 'T1011561301111580051020',
+      size: 200,
+      level: 'H',
+      foreground: '#000',
+      background: '#fff'
+    });
+  </script>
+</body>
+</html>
