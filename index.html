@@ -19,8 +19,8 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
       padding: 24px;
       text-align: center;
-      /* make the card wide enough for the 600px QR + 40px padding */
-      max-width: 680px;
+      width: 90%;
+      max-width: 320px;   /* tight to QR + padding */
       margin: 0 auto;
     }
     .offer-card h2 {
@@ -39,23 +39,24 @@
       margin: 0 0 16px;
     }
     .qr-container {
-      background: #ffffff;       /* ensures clean white “quiet zone” */
-      padding: 20px;              /* 20px margin around the code */
+      background: #ffffff;
+      padding: 10px;             /* quiet zone */
       display: block;
       border-radius: 6px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      margin: 0 auto;             /* center inside the card */
+      margin: 0 auto 8px;
+      width: 200px;              /* fixed size */
     }
     #qrcode {
-      width: 600px;               /* 600×600px for crisp 2″@300dpi output */
-      height: 600px;
+      width: 200px;
+      height: 200px;
     }
     .scan-text {
       font-size: 0.875rem;
       font-weight: bold;
       color: #333;
-      margin-top: 8px;
       letter-spacing: 1px;
+      margin: 0;
     }
   </style>
 </head>
@@ -69,6 +70,7 @@
     <p class="description">
       Only to be redeemed for customers who have collected their Click &amp; Collect order that same day and are purchasing in-store.
     </p>
+
     <div class="qr-container">
       <div id="qrcode"></div>
     </div>
@@ -82,11 +84,11 @@
 
     new QRCode(document.getElementById("qrcode"), {
       text: qrData,
-      width: 600,
-      height: 600,
+      width: 200,               // smaller draw size
+      height: 200,
       colorDark: "#000000",
       colorLight: "#ffffff",
-      correctLevel: QRCode.CorrectLevel.H  // High error-correction (~30%)
+      correctLevel: QRCode.CorrectLevel.H  // high error correction
     });
   </script>
 
