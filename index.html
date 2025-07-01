@@ -1,80 +1,91 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <!-- QRious: QR code generator -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js" integrity="sha512-2JDYv3eQPx4RqgBybIx+cp+T3eV7fwIUdNIpsGQ/3uJ8+S0G5IZay3oZad3JerZTxtqrsF+PWGV1SBf0xG5yYg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <meta charset="UTF-8">
+  <title>Click & Collect Offer</title>
   <style>
-    html, body {
-      width: 100%; height: 100%; margin: 0;
-      display: flex; justify-content: center; align-items: center;
-      background-color: #e8f5ed; /* H&B mint */
+    body {
+      background-color: #f5f7f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
       font-family: Arial, sans-serif;
     }
-    .qr-box {
-      background-color: #fff;
-      border-radius: 1rem;
-      padding: 1rem;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    .offer-card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      padding: 24px;
       text-align: center;
-      max-width: 320px;
-      width: 100%;
+      max-width: 300px;
     }
-    .offer-text h3 {
-      font-size: 1.4rem; font-weight: 700;
-      color: #005445;
-      margin-bottom: 0.5rem;
+    .offer-card h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1b4332;
+      margin: 0 0 8px;
+      line-height: 1.3;
     }
-    .offer-text p {
-      font-size: 1rem; color: #333;
-      margin: 0 0 1rem;
+    .offer-card h2 .highlight {
+      text-decoration: underline;
+    }
+    .offer-card p.description {
+      font-size: 0.875rem;
+      color: #4a4a4a;
+      margin: 0 0 16px;
     }
     .qr-container {
-      background-color: #000;
-      border-radius: 1rem;
-      padding: 0.5rem;
+      background: #000;
+      padding: 12px;
       display: inline-block;
+      border-radius: 6px;
     }
-    #qrCanvas {
-      display: block;
-      width: 200px; height: 200px;
-      background: #fff;
-      border: 16px solid #fff;
-      border-radius: 0.75rem;
+    #qrcode {
+      width: 150px;
+      height: 150px;
     }
     .scan-text {
-      margin-top: 0.5rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #fff;
+      font-size: 0.875rem;
+      font-weight: bold;
+      color: #333;
+      margin-top: 8px;
       letter-spacing: 1px;
-      text-align: center;
     }
   </style>
 </head>
 <body>
-  <div class="qr-box">
-    <div class="offer-text">
-      <h3>Click &amp; Collect exclusive <u>10% off offer:</u></h3>
-      <p>Only to be redeemed for customers who have collected their Click &amp; Collect order that same day and are purchasing in-store.</p>
-    </div>
+
+  <div class="offer-card">
+    <h2>
+      Click &amp; Collect exclusive 
+      <span class="highlight">10% off offer:</span>
+    </h2>
+    <p class="description">
+      Only to be redeemed for customers who have collected their Click &amp; Collect order that same day and are purchasing in-store.
+    </p>
     <div class="qr-container">
-      <canvas id="qrCanvas"></canvas>
-      <div class="scan-text">SCAN ME</div>
+      <div id="qrcode"></div>
     </div>
+    <p class="scan-text">SCAN ME</p>
   </div>
 
+  <!-- QRCode.js library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script>
-    // Generate QR code with high error correction
-    new QRious({
-      element: document.getElementById('qrCanvas'),
-      value: 'T1011561301111580051020',
-      size: 200,
-      level: 'H',
-      foreground: '#000',
-      background: '#fff'
+    // Encoded payload:
+    var qrData = "T1011561301111580051020";
+
+    new QRCode(document.getElementById("qrcode"), {
+      text: qrData,
+      width: 150,
+      height: 150,
+      colorDark: "#000000",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.H
     });
   </script>
+
 </body>
 </html>
